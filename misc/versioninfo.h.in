@@ -1,0 +1,11 @@
+#include <string_view>
+
+constexpr std::string_view versionInfo()
+{
+    return "@VERSION_STRING@";
+}
+
+constexpr uint64_t buildNumber()
+{
+    return @BUILD_NUMBER@;
+}
