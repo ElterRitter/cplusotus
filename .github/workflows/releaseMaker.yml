@@ -44,4 +44,4 @@ jobs:
         prerelease: false
         generate_release_notes: false
         files: "*.deb"
-        tag: release
+        tag_name: release
