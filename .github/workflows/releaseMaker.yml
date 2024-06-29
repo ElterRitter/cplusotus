@@ -31,12 +31,13 @@ jobs:
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
-
-    # - name: ReleaseMaking
-    #   uses: elgohr/Github-Release-Action@v5
-    #   env:
-    #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
+    - name: 'Get Previous tag'
+      id: previous_tag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      with:
+        fallback: 0.1
+
     - name: ReleaseUploader
       uses: softprops/action-gh-release@v2
       with:
