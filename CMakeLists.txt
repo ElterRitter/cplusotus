@@ -67,3 +67,40 @@ elseif(NOT GTest_FOUND)
 elseif(NOT BUILD_TESTS)
     message(WARNING "Unit-testing is disabled for project ${PROJECT_NAME}")
 endif()
+
+
+# installation
+install(TARGETS ${PROJECT_NAME} DESTINATION /usr/bin)
+
+
+# packaging
+if(UNIX)
+    set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+    set(CPACK_PACKAGE_CONTACT "Aleksei Tihonov <atichonov@yandex.ru>")
+    set(CPACK_GENERATOR "DEB")
+    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6, libstdc++6, libgcc1")
+    set(CPACK_STRIP_FILES ON)
+    if(NOT DEFINED CPACK_PACKAGE_VERSION)
+        set(CPACK_PACKAGE_VERSION "${OTUS_PROJECT_VERSION}")
+    endif()
+
+    # detect os version and release number
+    find_program( LSB_RELEASE_EXECUTABLE lsb_release )
+    execute_process(COMMAND ${LSB_RELEASE_EXECUTABLE} -is
+                    OUTPUT_VARIABLE OS_RELEASE_NAME
+                    OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+    execute_process(COMMAND ${LSB_RELEASE_EXECUTABLE} -rs
+                    OUTPUT_VARIABLE OS_RELEASE_VERSION
+                    OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+    # detect architecture
+    execute_process(COMMAND "dpkg" "--print-architecture"
+                    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+                    RESULT_VARIABLE DPKG_RES
+                    OUTPUT_VARIABLE DPKG_ARCH
+                    OUTPUT_STRIP_TRAILING_WHITESPACE
+                    ERROR_STRIP_TRAILING_WHITESPACE)
+    set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}_${OS_RELEASE_NAME}_${OS_RELEASE_VERSION}_${DPKG_ARCH}")
+    include(CPack)
+endif()
