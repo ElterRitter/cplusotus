@@ -4,6 +4,7 @@
 #include <boost/program_options.hpp>
 
 #include <iostream>
+#include <memory>
 
 using std::cout;
 using std::endl;
@@ -33,6 +34,8 @@ int main(int argc, char **argv)
     switch(lessionNumber)
     {
     case 1: {
+        auto ret = pFilter->filter();
+        pFilter->print(std::move(ret));
     }
     break;
     default:
