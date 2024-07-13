@@ -1,8 +1,13 @@
 #include "ipfilter.h"
 
 #include <boost/asio.hpp>
+
+#include <fstream>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
+
+using std::string;
 using std::cout;
 using std::endl;
 
