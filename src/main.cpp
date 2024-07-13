@@ -1,8 +1,10 @@
 #include "versionInfo.h"
+#include "ipfilter.h"
 
 #include <boost/program_options.hpp>
 
 #include <iostream>
+#include <memory>
 
 using std::cout;
 using std::endl;
@@ -32,6 +34,9 @@ int main(int argc, char **argv)
     switch(lessionNumber)
     {
     case 1: {
+        auto pFilter = std::make_unique<IpFilter>();
+        auto ret = pFilter->filter();
+        pFilter->print(std::move(ret));
     }
     break;
     default:
