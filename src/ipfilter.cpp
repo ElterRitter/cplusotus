@@ -7,15 +7,16 @@
 #include <sstream>
 #include <algorithm>
 
+using std::fstream;
 using std::string;
 using std::cout;
 using std::endl;
 
 
-IpFilter::iplist IpFilter::filter()
+IpFilter::IpFilter(std::istream &stream)
 {
     string strIP;
-    for( string str; std::getline(std::cin, str); )
+    for( string str; std::getline(stream, str); )
     {
         std::stringstream ss(str);
         std::getline(ss, strIP, '\t');
@@ -23,9 +24,11 @@ IpFilter::iplist IpFilter::filter()
         auto val = boost::asio::ip::address_v4::from_string(strIP).to_uint();
         m_listAddresses.push_back(val);
     }
+}
 
+IpFilter::iplist IpFilter::filter()
+{
     std::sort(m_listAddresses.begin(), m_listAddresses.end(), std::greater<uint32_t>());
-
     return m_listAddresses;
 }
 
