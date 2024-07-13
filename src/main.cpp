@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     switch(lessionNumber)
     {
     case 1: {
-        auto pFilter = std::make_unique<IpFilter>();
+        auto pFilter = std::make_unique<IpFilter>(std::cin);
         auto ret = pFilter->filter();
         pFilter->print(std::move(ret));
         ret = pFilter->filterBySingleValue(0x01);

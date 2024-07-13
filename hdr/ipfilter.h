@@ -2,12 +2,13 @@
 
 #include <vector>
 #include <cstdint>
+#include <istream>
 
 class IpFilter
 {
 public:
     using iplist = std::vector<uint32_t>;
-    IpFilter() = default;
+    explicit IpFilter(std::istream &stream);
 
     iplist filter();
     iplist filterBySingleValue(const uint32_t value);

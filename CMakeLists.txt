@@ -78,8 +78,13 @@ if(BUILD_TESTING AND GTest_FOUND)
                                                        CXX_STANDARD_REQUIRED ON)
     target_include_directories(${TESTING_TARGET} PRIVATE ${PROJECT_BINARY_DIR}
                                                  PRIVATE ${PROJECT_SOURCE_DIR}/hdr)
+
+    target_compile_definitions(${TESTING_TARGET} PRIVATE -D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING
+                                                          PRIVATE -D_WIN32_WINNT=0x0601)
+
     gtest_discover_tests(${TESTING_TARGET})
     target_link_libraries(${TESTING_TARGET} PRIVATE GTest::GTest GTest::Main Boost::program_options)
+    add_custom_target(COPY_TEST_DATA ALL ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/tests/test_data.tsv ${PROJECT_BINARY_DIR}/test_data.tsv)
 elseif(NOT GTest_FOUND)
     message(WARNING "Can't find GTest library needed for testing project ${PROJECT_NAME}")
 elseif(NOT BUILD_TESTS)
