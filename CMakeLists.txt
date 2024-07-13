@@ -48,6 +48,9 @@ list(APPEND HDRS ${VERSION_HEADER})
 # define executable target with sources and headers
 add_executable(${PROJECT_NAME} ${SRCS} ${HDRS} ${MSRCS})
 
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17
+                                                 CXX_STANDARD_REQUIRED ON)
+
 # define a source groups ( helpfull for some IDEs )
 source_group("Sources" FILES "${SRCS};${MSRCS}")
 source_group("Headers" FILES ${HDRS})
@@ -55,6 +58,10 @@ source_group("Headers" FILES ${HDRS})
 # add binary dir as an include directory ( for version header )
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_BINARY_DIR}
                                            PRIVATE ${PROJECT_SOURCE_DIR}/hdr)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE -D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING
+                                           PRIVATE -D_WIN32_WINNT=0x0601)
+
 # link with libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE Boost::program_options Boost::headers)
 
