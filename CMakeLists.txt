@@ -28,6 +28,8 @@ endif()
 project(OtusLessions LANGUAGES CXX VERSION ${OTUS_PROJECT_VERSION})
 message(STATUS "Project ${PROJECT_NAME} have version ${OTUS_PROJECT_VERSION_FULL}")
 
+find_package(Boost COMPONENTS program_options CONFIG REQUIRED)
+
 # define variables and make version header
 set(VERSION_STRING "${OTUS_PROJECT_VERSION_FULL}")
 set(BUILD_NUMBER ${OTUS_PROJECT_VERSION_PATCH})
@@ -50,6 +52,8 @@ source_group("Headers" FILES ${HDRS})
 
 # add binary dir as an include directory ( for version header )
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_BINARY_DIR})
+# link with libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::program_options Boost::headers)
 
 
 # testing
@@ -61,7 +65,7 @@ if(BUILD_TESTING AND GTest_FOUND)
     add_executable(${TESTING_TARGET} ${SRC_TESTS})
     target_include_directories(${TESTING_TARGET} PRIVATE ${PROJECT_BINARY_DIR})
     gtest_discover_tests(${TESTING_TARGET})
-    target_link_libraries(${TESTING_TARGET} PRIVATE GTest::GTest GTest::Main)
+    target_link_libraries(${TESTING_TARGET} PRIVATE GTest::GTest GTest::Main Boost::program_options)
 elseif(NOT GTest_FOUND)
     message(WARNING "Can't find GTest library needed for testing project ${PROJECT_NAME}")
 elseif(NOT BUILD_TESTS)
