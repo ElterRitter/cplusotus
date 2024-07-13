@@ -78,6 +78,10 @@ if(BUILD_TESTING AND GTest_FOUND)
                                                        CXX_STANDARD_REQUIRED ON)
     target_include_directories(${TESTING_TARGET} PRIVATE ${PROJECT_BINARY_DIR}
                                                  PRIVATE ${PROJECT_SOURCE_DIR}/hdr)
+
+    target_compile_definitions(${TESTING_TARGET} PRIVATE -D_SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING
+                                                          PRIVATE -D_WIN32_WINNT=0x0601)
+
     gtest_discover_tests(${TESTING_TARGET})
     target_link_libraries(${TESTING_TARGET} PRIVATE GTest::GTest GTest::Main Boost::program_options)
 elseif(NOT GTest_FOUND)
