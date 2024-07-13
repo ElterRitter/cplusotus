@@ -40,6 +40,18 @@ IpFilter::iplist IpFilter::filterBySingleValue(const uint32_t value)
     return ret;
 }
 
+IpFilter::iplist IpFilter::filterByBytes(const uint16_t value)
+{
+    iplist ret;
+    std::copy_if(m_listAddresses.begin(), m_listAddresses.end(), std::back_inserter(ret),
+                 [&value](const uint32_t &ipVal)
+                 {
+                     bool ret = (ipVal >> 16) == value;
+                     return ret;
+                 });
+    return ret;
+}
+
 void IpFilter::print(const iplist &&value)
 {
     for(const auto &ip : value)
