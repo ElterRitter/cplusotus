@@ -1,4 +1,5 @@
 #include "versionInfo.h"
+#include "ipfilter.h"
 
 #include <boost/program_options.hpp>
 
