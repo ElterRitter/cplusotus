@@ -10,6 +10,7 @@ public:
     IpFilter() = default;
 
     iplist filter();
+    iplist filterBySingleValue(const uint32_t value);
 
     void print(const iplist&& value);
 

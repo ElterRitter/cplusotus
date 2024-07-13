@@ -29,6 +29,17 @@ IpFilter::iplist IpFilter::filter()
     return m_listAddresses;
 }
 
+IpFilter::iplist IpFilter::filterBySingleValue(const uint32_t value)
+{
+    iplist ret;
+
+    std::copy_if(m_listAddresses.begin(), m_listAddresses.end(), std::back_inserter(ret),
+                 [&value](const uint32_t &ipVal)
+                 { return (ipVal >> 24) == value; }
+                );
+    return ret;
+}
+
 void IpFilter::print(const iplist &&value)
 {
     for(const auto &ip : value)

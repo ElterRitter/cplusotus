@@ -37,6 +37,8 @@ int main(int argc, char **argv)
         auto pFilter = std::make_unique<IpFilter>();
         auto ret = pFilter->filter();
         pFilter->print(std::move(ret));
+        ret = pFilter->filterBySingleValue(0x01);
+        pFilter->print(std::move(ret));
     }
     break;
     default:
