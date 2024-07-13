@@ -29,3 +29,8 @@ IpFilter::iplist IpFilter::filter()
     return m_listAddresses;
 }
 
+void IpFilter::print(const iplist &&value)
+{
+    for(const auto &ip : value)
+        cout << boost::asio::ip::address_v4(ip).to_string() << endl;
+}

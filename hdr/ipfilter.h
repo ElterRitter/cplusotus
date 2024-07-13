@@ -10,6 +10,9 @@ public:
     IpFilter() = default;
 
     iplist filter();
+
+    void print(const iplist&& value);
+
 private:
     iplist m_listAddresses;
 };
