@@ -52,6 +52,26 @@ IpFilter::iplist IpFilter::filterByBytes(const uint16_t value)
     return ret;
 }
 
+IpFilter::iplist IpFilter::filterByAnyByte(const uint8_t value)
+{
+    iplist ret;
+    std::copy_if(m_listAddresses.begin(), m_listAddresses.end(), std::back_inserter(ret),
+                 [&value](const uint32_t &ipVal)
+                 {
+                    uint32_t mask = 0x000000FF;
+                    uint32_t testVal = 0;
+                    for(int i = 0; i < 4; i++)
+                    {
+                        testVal = (ipVal & mask) >> 8*i;
+                        mask = mask << 8;
+                        if(testVal == value)
+                            return true;
+                    }
+                    return false;
+                 });
+    return ret;
+}
+
 void IpFilter::print(const iplist &&value)
 {
     for(const auto &ip : value)

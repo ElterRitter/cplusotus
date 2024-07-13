@@ -41,6 +41,8 @@ int main(int argc, char **argv)
         pFilter->print(std::move(ret));
         ret = pFilter->filterByBytes(0x2e46);
         pFilter->print(std::move(ret));
+        ret = pFilter->filterByAnyByte(0x2e);
+        pFilter->print(std::move(ret));
     }
     break;
     default:

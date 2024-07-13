@@ -12,6 +12,7 @@ public:
     iplist filter();
     iplist filterBySingleValue(const uint32_t value);
     iplist filterByBytes(const uint16_t value);
+    iplist filterByAnyByte(const uint8_t value);
 
     void print(const iplist&& value);
 
