@@ -84,6 +84,7 @@ if(BUILD_TESTING AND GTest_FOUND)
 
     gtest_discover_tests(${TESTING_TARGET})
     target_link_libraries(${TESTING_TARGET} PRIVATE GTest::GTest GTest::Main Boost::program_options)
+    add_custom_target(COPY_TEST_DATA ALL ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/tests/test_data.tsv ${PROJECT_BINARY_DIR}/test_data.tsv)
 elseif(NOT GTest_FOUND)
     message(WARNING "Can't find GTest library needed for testing project ${PROJECT_NAME}")
 elseif(NOT BUILD_TESTS)
