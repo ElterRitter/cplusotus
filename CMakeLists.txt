@@ -71,7 +71,7 @@ include(CTest)
 find_package(GTest QUIET)
 if(BUILD_TESTING AND GTest_FOUND)
     set(TESTING_TARGET "${PROJECT_NAME}_TEST")
-    set(SRC_TESTS "tests/test_version.cpp")
+    set(SRC_TESTS tests/test_version.cpp tests/test_ipfilter.cpp)
     set(HDR_TESTS tests/test_ipfilter.h)
     add_executable(${TESTING_TARGET} ${SRC_TESTS} ${HDR_TESTS} ${SRCS})
     target_include_directories(${TESTING_TARGET} PRIVATE ${PROJECT_BINARY_DIR}
