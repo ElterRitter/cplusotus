@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     po::store(po::parse_command_line(argc, argv, descr), vm);
     po::notify(vm);
 
-    if(vm.count("help"))
+    if(vm.count("help") || (lessonNumber == 0))
     {
         cout << "Hello world!" << endl;
         cout << "Current build is " << versionInfo() << endl;
