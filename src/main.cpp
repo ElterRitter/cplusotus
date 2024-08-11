@@ -13,11 +13,11 @@ namespace po = boost::program_options;
 
 int main(int argc, char **argv)
 {
-    uint32_t lessionNumber = -1;
+    uint32_t lessonNumber = -1;
     po::options_description descr("Avaliable options");
     descr.add_options()
         ("help", "Usage: -l<number> lession number")
-        ("lession,l", po::value<uint32_t>(&lessionNumber)->default_value(1), "lession number");
+        ("lession,l", po::value<uint32_t>(&lessonNumber)->default_value(0), "lession number");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, descr), vm);
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         return 0;
     }
 
-    switch(lessionNumber)
+    switch(lessonNumber)
     {
     case 1: {
         auto pFilter = std::make_unique<IpFilter>(std::cin);
