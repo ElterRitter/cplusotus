@@ -36,6 +36,17 @@ set(BUILD_NUMBER ${OTUS_PROJECT_VERSION_PATCH})
 set(VERSION_HEADER "${PROJECT_BINARY_DIR}/versionInfo.h")
 configure_file(${PROJECT_SOURCE_DIR}/misc/versioninfo.h.in ${VERSION_HEADER} @ONLY)
 
+# option for building documentation
+option(BUILD_DOCUMENTATION "Create and install documentation ( doxygen requires )" OFF)
+if(BUILD_DOCUMENTATION)
+    find_package(Doxygen)
+    if(NOT DOXYGEN_FOUND)
+        message(FATAL_ERROR "Doxygen for building documention - not found")
+    endif()
+    configure_file(${PROJECT_SOURCE_DIR}/misc/doxyfile.in ${PROJECT_BINARY_DIR}/doxyfile @ONLY)
+    add_custom_target(doc ALL ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/doxyfile WORKING_DIRECTORY)
+endif()
+
 # define project sources and headers
 set(MSRCS src/main.cpp)
 set(SRCS src/ipfilter.cpp)
