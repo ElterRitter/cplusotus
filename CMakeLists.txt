@@ -49,9 +49,11 @@ endif()
 
 # define project sources and headers
 set(MSRCS src/main.cpp)
-set(SRCS src/ipfilter.cpp)
-
-set(HDRS hdr/ipfilter.h)
+set(SRCS src/ipfilter.cpp
+)
+set(HDRS hdr/ipfilter.h
+         hdr/sfinaelesson.h
+)
 
 # append version header to project headers
 list(APPEND HDRS ${VERSION_HEADER})

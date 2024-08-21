@@ -1,5 +1,6 @@
 #include "versionInfo.h"
 #include "ipfilter.h"
+#include "sfinaelesson.h"
 
 #include <boost/program_options.hpp>
 
@@ -44,6 +45,16 @@ int main(int argc, char **argv)
         ret = pFilter->filterByAnyByte(0x2e);
         pFilter->print(std::move(ret));
     }
+    break;
+    case 3:
+        sfinae::print_ip(uint8_t(-1));
+        sfinae::print_ip(uint16_t{0});
+        sfinae::print_ip(int32_t{2130706433});
+        sfinae::print_ip(int64_t{8875824491850138409});
+        sfinae::print_ip( std::string{"Hello, World!"} );         // Hello, World!
+        sfinae::print_ip( std::vector<int>{100, 200, 300, 400} ); // 100.200.300.400
+        sfinae::print_ip( std::list<short>{400, 300, 200, 100} ); // 400.300.200.100
+        sfinae::print_ip( std::make_tuple(123, 456, 789, 0) );    // 123.456.789.0
     break;
     default:
         cout << "invalid options. Usage " << descr << endl;
