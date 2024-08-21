@@ -6,6 +6,7 @@
 #include <list>
 #include <tuple>
 #include <type_traits>
+#include <typeinfo>
 
 namespace sfinae {
 
@@ -98,7 +99,8 @@ template<typename T,
          >
 void print_ip(const T& )
 {
-    static_assert(false, "Cat't print this type");
+    std::cout << "Wrong type detection " << typeid(T).name();
+//    static_assert(false, "Cat't print this type");
 }
 
 
@@ -168,8 +170,6 @@ template<typename T,
 void print_ip(const T& item)
 {
     using sz = std::tuple_size<T>;
-    std::cout << "Detected tuple. Size " << sz::value << std::endl;
-
     printElement<T, 0, sz::value, sz::value>(item);
 }
 
