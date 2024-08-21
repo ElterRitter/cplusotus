@@ -90,7 +90,9 @@ using isSameTyple = std::enable_if_t<all_same_tuple_params<T...>::value, bool>;
 template<typename ...T>
 using isNotSameTyple = std::enable_if_t<!all_same_tuple_params<T...>::value, bool>;
 
-
+/*!
+ * \brief print_ip - шаблонная функция, которая не должна быть вызывана
+ */
 template<typename T,
          isNotArithmetic<T> = true,
          isNotIteribleContainer<T> = true,
@@ -99,12 +101,18 @@ template<typename T,
          >
 void print_ip(const T& )
 {
+    assert(false);
     std::cout << "Wrong type detection " << typeid(T).name();
 //    static_assert(false, "Cat't print this type");
 }
 
 
-// digits
+/*!
+ * \brief print_ip шаблонная функция для печати арифметических типов
+ * \param item любой арифметический тип
+ * \details представляет тип как массив байт и последовательно распечатывает байты
+ * от старшего к младшему
+ */
 template<typename T,
          isArithmetic<T> = true>
 void print_ip(const T& item)
@@ -122,6 +130,11 @@ void print_ip(const T& item)
     std::cout << std::endl;
 }
 
+/*!
+ * \brief print_ip шаблонная функция для печати строки
+ * \param строка
+ * \details функция вызыввается для строкового типа ( std::string )
+ */
 template<typename T,
          isString<T> = true >
 void print_ip(const T& item)
@@ -129,7 +142,10 @@ void print_ip(const T& item)
     std::cout << item << std::endl;
 }
 
-// vector or list
+/*!
+ * \brief print_ip шаблонная функция для печати содержимого контейнера
+ * \param item контейнер содержимое которого нужно распечатать
+ */
 template<typename T,
          isIteribleContainer<T> = true>
 void print_ip(const T& item)
@@ -149,13 +165,25 @@ void print_ip(const T& item)
 }
 
 
-// tuple
+/*!
+ * \brief printElement функция-хелпер для перевода каретки после последнего символа из кортежа
+ * \tparam Tu - кортеж
+ * \tparam I - индекс элемента кортежа
+ * \tparam Ts - рамер кортежа
+ */
 template<class Tu, std::size_t I, std::size_t Ts, isLastTupleElement<I, Ts> >
 void printElement(const Tu&)
 {
     std::cout << std::endl;
 }
 
+/*!
+ * \brief printElement функция печати элементов кортежа по индексу
+ * \param item кортеж для печати
+ * \tparam Tu - кортеж
+ * \tparam I - индекс элемента кортежа
+ * \tparam Ts - рамер кортежа
+ */
 template < class Tu, std::size_t I, std::size_t Ts, isNotLastTupleElement<I, Ts> >
 void printElement(const Tu& item)
 {
@@ -164,6 +192,10 @@ void printElement(const Tu& item)
     printElement<Tu, I+1, Ts, 0>(item);
 }
 
+/*!
+ * \brief print_ip шаблонная функция для печати кортежа
+ * \param item кортеж
+ */
 template<typename T,
          isTuple<T> = true,
          isSameTyple<T> = true >
