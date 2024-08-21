@@ -46,6 +46,9 @@ int main(int argc, char **argv)
         pFilter->print(std::move(ret));
     }
     break;
+    case 2: {
+    }
+    break;
     case 3:
         sfinae::print_ip(uint8_t(-1));
         sfinae::print_ip(uint16_t{0});
