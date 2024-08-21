@@ -7,6 +7,7 @@
 #include <tuple>
 #include <type_traits>
 #include <typeinfo>
+#include <cassert>
 
 namespace sfinae {
 
@@ -90,6 +91,9 @@ using isSameTyple = std::enable_if_t<all_same_tuple_params<T...>::value, bool>;
 template<typename ...T>
 using isNotSameTyple = std::enable_if_t<!all_same_tuple_params<T...>::value, bool>;
 
+template<class>
+constexpr bool dependent_false = false; // workaround before CWG2518/P2593R1
+
 /*!
  * \brief print_ip - шаблонная функция, которая не должна быть вызывана
  */
@@ -101,9 +105,9 @@ template<typename T,
          >
 void print_ip(const T& )
 {
+    static_assert(dependent_false<T>, "Can't print type. Workaround of static_assert<false> for old compilers, before CWG2518/P2593R1");
     assert(false);
     std::cout << "Wrong type detection " << typeid(T).name();
-//    static_assert(false, "Cat't print this type");
 }
 
 
