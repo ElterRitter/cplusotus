@@ -5,6 +5,8 @@
 #include <QSettings>
 #include <QDebug>
 
+namespace otuseditor {
+
 QSettingsStorage::QSettingsStorage(const std::string &filePathName)
 {
     QString fileName = QString::fromStdString(filePathName);
@@ -96,3 +98,4 @@ std::string QSettingsStorage::rawStoragePath() const
     return ret.toStdString();
 }
 
+}

@@ -8,6 +8,7 @@ Q_LOGGING_CATEGORY(documentstorage, "DocumentStorage")
 #define Info qInfo(documentstorage)
 #define Warn qWarning(documentstorage)
 
+namespace otuseditor {
 
 DocumentStorage::DocumentStorage()
 {
@@ -43,4 +44,6 @@ bool DocumentStorage::saveCurrent(const std::string &filePathName)
     auto &doc = m_documents[m_currentDocumentIndex];
     QSettingsStorage::SPtr settings = std::make_shared<QSettingsStorage>(filePathName);
     return doc->save(settings);
+}
+
 }

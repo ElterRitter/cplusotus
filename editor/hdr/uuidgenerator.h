@@ -3,6 +3,8 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
+namespace otuseditor {
+
 namespace uuidgenerator
 {
     static std::string makeID()
@@ -12,4 +14,6 @@ namespace uuidgenerator
         id = gen();
         return boost::uuids::to_string(id);
     }
+};
+
 };

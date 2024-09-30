@@ -7,6 +7,8 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
+namespace otuseditor {
+
 IGotusElement::SPtr GotusElementFabric::createElementByName(const std::string &elementId,
                                                            const std::string &elemType,
                                                            const ISettingsStorage::WPtr settings)
@@ -38,4 +40,6 @@ IGotusElement::SPtr GotusElementFabric::createElement(const IGotusElement::Type 
     }
 
     return ret;
+}
+
 }

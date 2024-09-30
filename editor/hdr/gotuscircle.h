@@ -3,11 +3,12 @@
 #include "internaltypes.h"
 #include "isettingsstorage.h"
 
+namespace otuseditor {
+
 /*!
  * \brief Класс GOtusCircle является примитивом окружности
  * \details Отрисовывается залитой красным цветом круг
  */
-
 class GOtusCircle : public IGotusElement
 {
 public:
@@ -70,4 +71,6 @@ private:
     uint32_t m_radius;
 
     GOtusCircle(const std::string &id);
+};
+
 };

@@ -2,6 +2,8 @@
 #include "igotuselement.h"
 #include "isettingsstorage.h"
 
+
+namespace otuseditor {
 class GotusElementFabric
 {
 public:
@@ -21,3 +23,4 @@ private:
     GotusElementFabric() = default;
 };
 
+};

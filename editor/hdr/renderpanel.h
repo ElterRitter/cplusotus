@@ -9,19 +9,18 @@
 
 Q_DECLARE_LOGGING_CATEGORY(renderpanel)
 
-class RenderPanel : public QWidget, public IRenderSurface
+class RenderPanel : public QWidget, public otuseditor::IRenderSurface
 {
 public:
     explicit RenderPanel(QWidget *parent = nullptr);
 
-    virtual void renderDocument(const GOtusDocument::WPtr &document) override;
+    virtual void renderDocument(const otuseditor::GOtusDocument::WPtr &document) override;
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
     virtual void mousePressEvent(QMouseEvent *event) override;
 
 private:
-    using RenderDocumentPtr = std::weak_ptr<GOtusDocument>;
+    using RenderDocumentPtr = std::weak_ptr<otuseditor::GOtusDocument>;
     RenderDocumentPtr m_renDoc;
 };
-

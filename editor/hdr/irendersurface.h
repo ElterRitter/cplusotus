@@ -2,6 +2,8 @@
 
 #include "gotusdocument.h"
 
+namespace otuseditor {
+
 class IRenderSurface
 {
 public:
@@ -9,4 +11,6 @@ public:
     virtual ~IRenderSurface() = default;
 
     virtual void renderDocument(const GOtusDocument::WPtr &document) = 0;
+};
+
 };

@@ -10,6 +10,8 @@
 
 Q_DECLARE_LOGGING_CATEGORY(gotusdocument)
 
+namespace otuseditor {
+
 class GOtusDocument
 {
 public:
@@ -41,4 +43,6 @@ private:
     GOtusDocument();
     bool load(const ISettingsStorage::WPtr settings);
     std::string elementTypeAsString(const IGotusElement::Type &type);
+};
+
 };

@@ -10,6 +10,8 @@
 
 #include <functional>
 
+using namespace otuseditor;
+
 mwnd::mwnd(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::mwnd)

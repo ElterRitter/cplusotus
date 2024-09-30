@@ -4,6 +4,8 @@
 #include <string>
 #include <list>
 
+namespace otuseditor {
+
 class ISettingsStorage
 {
 public:
@@ -28,3 +30,5 @@ public:
     virtual stringlist values() = 0;
     virtual std::string rawStoragePath() const = 0;
 };
+
+}

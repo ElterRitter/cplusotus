@@ -6,6 +6,8 @@
 
 class QSettings;
 
+namespace otuseditor {
+
 class QSettingsStorage : public ISettingsStorage
 {
 public:
@@ -29,3 +31,4 @@ private:
     std::shared_ptr<QSettings> m_settings;
 };
 
+};

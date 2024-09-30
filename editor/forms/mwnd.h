@@ -28,10 +28,10 @@ private slots:
 
 private:
     Ui::mwnd *ui;
-    DocumentStorage::SPtr m_docStorage;
-    IGotusElement::SPtr m_elementToAdd;
+    otuseditor::DocumentStorage::SPtr m_docStorage;
+    otuseditor::IGotusElement::SPtr m_elementToAdd;
 
     void connectUI();
-    void onCurrentDocumentChanged(GOtusDocument::WPtr doc);
+    void onCurrentDocumentChanged(otuseditor::GOtusDocument::WPtr doc);
 };
 

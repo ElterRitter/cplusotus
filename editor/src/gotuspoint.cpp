@@ -7,6 +7,8 @@
 constexpr auto keyX = "x";
 constexpr auto keyY = "y";
 
+namespace otuseditor {
+
 GOtusPoint::GOtusPoint(const std::string &elementID) :
     m_elementId{elementID}, x_{50}, y_{10}
 {
@@ -59,4 +61,6 @@ void GOtusPoint::save(ISettingsStorage::WPtr settings)
         se->setValue(keyX, int(x_));
         se->setValue(keyY, int(y_));
     }
+}
+
 }

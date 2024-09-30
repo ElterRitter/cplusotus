@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 
+namespace otuseditor {
 class IGotusElement
 {
 public:
@@ -24,4 +25,6 @@ public:
     virtual Type type() const = 0;
     virtual bool load(const ISettingsStorage::WPtr settings) = 0;
     virtual void save(ISettingsStorage::WPtr settings) = 0;
+};
+
 };

@@ -9,6 +9,8 @@
 
 Q_DECLARE_LOGGING_CATEGORY(documentstorage)
 
+namespace otuseditor {
+
 class DocumentStorage
 {
 public:
@@ -28,4 +30,6 @@ private:
     documents m_documents;
     currentDocumentChangedCallback m_onCurrentDocChanged;
     std::size_t m_currentDocumentIndex;
+};
+
 };

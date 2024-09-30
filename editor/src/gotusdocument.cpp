@@ -8,6 +8,7 @@ Q_LOGGING_CATEGORY(gotusdocument, "editor.gotusdocument")
 #define Warn qWarning(gotusdocument)
 #define Info qInfo(gotusdocument)
 
+namespace otuseditor {
 
 constexpr uint32_t defaultDocumentVersion = 1;
 
@@ -128,4 +129,6 @@ std::string GOtusDocument::elementTypeAsString(const IGotusElement::Type &type)
     }
 
     return "";
+}
+
 }

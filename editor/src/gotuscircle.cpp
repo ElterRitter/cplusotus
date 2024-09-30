@@ -13,6 +13,9 @@ constexpr int defaultX = 0;
 constexpr auto keyCenterY = "y";
 constexpr int defaultY = 0;
 
+namespace otuseditor {
+
+
 GOtusCircle::SPtr GOtusCircle::create(const std::string &elementId, const ISettingsStorage::WPtr settings)
 {
     auto ret = std::shared_ptr<GOtusCircle>(new GOtusCircle(elementId) );
@@ -78,4 +81,6 @@ void GOtusCircle::setCenter(uint32_t x, uint32_t y)
 {
     m_center.x_ = x;
     m_center.y_ = y;
+}
+
 }

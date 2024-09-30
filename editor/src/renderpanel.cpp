@@ -16,7 +16,7 @@ RenderPanel::RenderPanel(QWidget *parent) :
 
 }
 
-void RenderPanel::renderDocument(const GOtusDocument::WPtr &document)
+void RenderPanel::renderDocument(const otuseditor::GOtusDocument::WPtr &document)
 {
     m_renDoc = document;
     QWidget::update();

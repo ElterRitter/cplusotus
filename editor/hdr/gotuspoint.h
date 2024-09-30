@@ -4,6 +4,7 @@
 
 #include <inttypes.h>
 
+namespace otuseditor {
 class GOtusPoint : public IGotusElement
 {
 public:
@@ -29,4 +30,6 @@ private:
     uint32_t y_;
 
     explicit GOtusPoint(const std::string &elementID);
+};
+
 };
