@@ -47,6 +47,10 @@ if(BUILD_DOCUMENTATION)
     add_custom_target(doc ALL ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/doxyfile WORKING_DIRECTORY)
 endif()
 
+option(BUILD_EDITOR "Build creator" OFF)
+if(BUILD_EDITOR)
+    add_subdirectory(editor)
+endif()
 # define project sources and headers
 set(MSRCS src/main.cpp)
 set(SRCS src/ipfilter.cpp
