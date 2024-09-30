@@ -27,7 +27,7 @@ public:
 
     void beginGroup(const std::string &groupName) override final;
     void endGroup() override final;
-    ISettingsStorage::stringlist values() override final;
+    ISettingsStorage::stringlist keys() override final;
     std::string rawStoragePath() const override final;
 
 private:

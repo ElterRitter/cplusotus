@@ -95,11 +95,11 @@ bool GOtusDocument::load(const ISettingsStorage::WPtr settings)
     {
         std::string defType;
         se->beginGroup("elements");
-        auto elems = se->values();
+        auto elems = se->keys();
         for(const auto &elem : elems)
         {
             se->beginGroup(elem);
-            if(se->values().empty())
+            if(se->keys().empty())
                 continue;
 
             auto elemType = se->value("type", defType);

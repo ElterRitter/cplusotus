@@ -77,7 +77,7 @@ void QSettingsStorage::endGroup()
         m_settings->endGroup();
 }
 
-ISettingsStorage::stringlist QSettingsStorage::values()
+ISettingsStorage::stringlist QSettingsStorage::keys()
 {
     ISettingsStorage::stringlist ret;
     auto keys = m_settings->childKeys();
