@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Install Doxygen
-        run: sudo apt install doxygen g++ cmake libgtest-dev libboost-program-options-dev libboost-dev
+        run: sudo apt install doxygen g++ cmake libgtest-dev libboost-program-options-dev libboost-dev graphviz
       - name: CMake Configuration
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DBUILD_DOCUMENTATION=ON
       - name: CMake building documentayion
