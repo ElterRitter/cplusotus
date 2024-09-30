@@ -35,6 +35,7 @@ set(HEADERS forms/mwnd.h
             hdr/gotuspoint.h
             hdr/documentstorage.h
             hdr/uuidgenerator.h
+            hdr/irendersurface.h
         )
 
 set(FORMS forms/mwnd.ui)
