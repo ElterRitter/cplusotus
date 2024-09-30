@@ -9,6 +9,9 @@
 
 Q_DECLARE_LOGGING_CATEGORY(renderpanel)
 
+/*!
+ * \brief Класс RenderPanel является реализацией контекста рисования документов для Qt-виджетов
+ */
 class RenderPanel : public QWidget, public otuseditor::IRenderSurface
 {
 public:

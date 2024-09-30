@@ -8,6 +8,9 @@ class QSettings;
 
 namespace otuseditor {
 
+/*!
+ * \brief Класс QSettingsStorage является реализацией интерфейса ISettingsStorage через QSettings
+ */
 class QSettingsStorage : public ISettingsStorage
 {
 public:

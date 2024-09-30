@@ -9,6 +9,9 @@ namespace Ui {
 class mwnd;
 }
 
+/*!
+ * \brief Класс mwnd главного окна приложения
+ */
 class mwnd : public QMainWindow
 {
     Q_OBJECT

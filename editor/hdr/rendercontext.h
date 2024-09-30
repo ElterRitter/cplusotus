@@ -2,6 +2,9 @@
 #include <QRect>
 #include <QPaintDevice>
 
+/*!
+ * \brief Класс RenderContext реализует контекст для рисования элементов
+ */
 class RenderContext
 {
 public:
