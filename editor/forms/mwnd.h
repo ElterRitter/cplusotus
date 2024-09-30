@@ -15,7 +15,6 @@ class mwnd;
 class mwnd : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit mwnd(QWidget *parent = nullptr);
     virtual ~mwnd();
