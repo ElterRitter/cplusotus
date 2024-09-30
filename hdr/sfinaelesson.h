@@ -156,6 +156,9 @@ void print_ip(const T& item)
 {
     auto it = std::begin(item);
     const auto it_end = std::end(item);
+    if(it == it_end)
+        return;
+
     do
     {
         std::cout << *it;
