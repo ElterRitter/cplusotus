@@ -46,8 +46,8 @@ void CommandProcessor::processingCommand(const std::string &cmd)
     case ICommand::Type::dynBlockClose:
         if(m_storages.size() == 2)
             publishBulk();
-
-        m_storages.pop();
+        if(m_storages.size() > 1)
+            m_storages.pop();
         break;
     case ICommand::Type::dynBlockOpen:
         if(m_storages.size() == 1)
