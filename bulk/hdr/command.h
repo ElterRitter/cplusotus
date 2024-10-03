@@ -39,5 +39,4 @@ private:
     TimePoint m_dtPoint;
 };
 
-std::ostream& operator<< (std::ostream& os, const ICommand::Ptr ptrCmd);
-std::ostream& operator<< (std::ostream& os, const CommonCommand *cmd);
+std::ostream& operator<< (std::ostream& os, const ICommand::WPtr ptrCmd);

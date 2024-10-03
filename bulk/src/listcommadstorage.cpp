@@ -1,5 +1,10 @@
 #include "listcommadstorage.h"
 
+#include <iostream>
+
+using std::cerr;
+using std::endl;
+
 ListCommadStorage::ListCommadStorage(const uint32_t bulkSize) :
     m_bulkSize{bulkSize}
 {
@@ -21,7 +26,17 @@ uint32_t ListCommadStorage::commandsCount() const noexcept
     return m_storage.size();
 }
 
-ICommand::Ptr ListCommadStorage::command(uint32_t idx) noexcept
+ICommand::WPtr ListCommadStorage::command(uint32_t idx) noexcept
 {
-    return  m_storage[idx];
+    ICommand::WPtr ret;
+    try
+    {
+        ret = m_storage.at(idx);
+    }
+    catch(std::out_of_range &ex)
+    {
+        cerr << "Can't get command by index " << idx << ": " << ex.what();
+    }
+
+    return ret;
 }

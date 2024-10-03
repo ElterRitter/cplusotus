@@ -13,7 +13,7 @@ public:
     virtual bool appendCommand( const ICommand::Ptr &cmd ) override final;
     virtual uint32_t bulkSize() const noexcept override final { return m_bulkSize; }
     virtual uint32_t commandsCount() const noexcept override final;
-    virtual ICommand::Ptr command(const uint32_t idx) noexcept override final;
+    virtual ICommand::WPtr command(const uint32_t idx) noexcept override final;
     virtual void clear() override final { m_storage.clear(); }
 
 private:

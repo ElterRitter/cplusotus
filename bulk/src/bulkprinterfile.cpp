@@ -43,9 +43,13 @@ void BulkPrinterFile::processBulk(ICommandStorage::Ptr ptrBulk)
     }
 }
 
-string BulkPrinterFile::makeFileName(const ICommand::Ptr &cmd)
+string BulkPrinterFile::makeFileName(const ICommand::WPtr &cmd)
 {
-    auto commonCmd = std::static_pointer_cast<CommonCommand>(cmd);
+    auto ptr = cmd.lock();
+    if(!ptr)
+        return "";
+
+    auto commonCmd = std::static_pointer_cast<CommonCommand>(ptr);
     if(!commonCmd)
         return string();
 

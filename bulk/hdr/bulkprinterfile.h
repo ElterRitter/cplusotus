@@ -14,7 +14,7 @@ public:
 private:
     std::string m_rootFilder;
 
-    std::string makeFileName(const ICommand::Ptr &cmd);
+    std::string makeFileName(const ICommand::WPtr &cmd);
 };
 
 

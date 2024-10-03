@@ -12,9 +12,13 @@ int64_t CommonCommand::timestamp() const noexcept
     return now_ms.time_since_epoch().count();
 }
 
-std::ostream &operator<<(std::ostream &os, const ICommand::Ptr ptrCmd)
+std::ostream &operator<<(std::ostream &os, const ICommand::WPtr ptrCmd)
 {
-    auto commonCmd = std::static_pointer_cast<CommonCommand>(ptrCmd);
+    auto ptr = ptrCmd.lock();
+    if(!ptr)
+        return os;
+
+    auto commonCmd = std::static_pointer_cast<CommonCommand>(ptr);
     if(commonCmd)
         os << commonCmd->data();
 
