@@ -4,6 +4,9 @@
 
 using namespace Bulk;
 
+constexpr auto predefinedCommandDynBlockOpen = "{";
+constexpr auto predefinedCommandDynBlockClose = "}";
+
 CommandFabric *CommandFabric::instance()
 {
     static CommandFabric fabric;
@@ -14,9 +17,9 @@ ICommand::Ptr CommandFabric::makeCommand(const std::string &data) const
 {
     ICommand::Ptr ret;
 
-    if(data == "{")
+    if(data == predefinedCommandDynBlockOpen)
         ret = std::make_shared<DynBlockOpenCommand>();
-    else if(data == "}")
+    else if(data == predefinedCommandDynBlockClose)
         ret = std::make_shared<DynBlockCloseCommand>();
     else
         ret = std::make_shared<CommonCommand>(data);
