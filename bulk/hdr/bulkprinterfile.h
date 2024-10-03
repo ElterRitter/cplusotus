@@ -5,9 +5,18 @@
 
 namespace Bulk {
 
+/*!
+ * \brief Класс BulkPrinterFile является реализайией интерфейса IBulkPrinter,
+ * который выводит накопленные команды в файл
+ */
+
 class BulkPrinterFile : public IBulkPrinter
 {
 public:
+    /*!
+     * \brief Конструктор BulkPrinterFile
+     * \param rootFolder определяет корневую папку, куда будут сохраняться файлы с командами
+     */
     explicit BulkPrinterFile(const std::string &rootFolder);
 
     // overrided members of IBulkPrinter

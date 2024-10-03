@@ -7,6 +7,10 @@
 
 namespace Bulk {
 
+/*!
+ * \brief Класс DynBlockOpenCommand является реализацией интерфейса ICommand,
+ * которая отмечает начало динамического блока команд
+ */
 class DynBlockOpenCommand : public ICommand
 {
 public:
@@ -16,6 +20,10 @@ public:
     virtual ICommand::Type type() const noexcept override final { return ICommand::Type::dynBlockOpen; };
 };
 
+/*!
+ * \brief Класс DynBlockCloseCommand является реализацией интерфейса ICommand,
+ * которая отмечает завершение динамического блока команд
+ */
 class DynBlockCloseCommand : public ICommand
 {
 public:
@@ -25,6 +33,11 @@ public:
     virtual ICommand::Type type() const noexcept override final { return ICommand::Type::dynBlockClose; }
 };
 
+/*!
+ * \brief Класс CommonCommand является реализацией интерфейса ICommand,
+ * которая представляет собой команду общего вида, содержащую
+ * строку данных
+ */
 class CommonCommand : public ICommand
 {
 public:
@@ -43,4 +56,10 @@ private:
 
 };  // namespace Bulk
 
+/*!
+ * \brief operator << перегруженный оператор для вывода команды в выводной поток
+ * \param os поток вывода ( файл, консоль и т.п. )
+ * \param ptrCmd команда, которую нужно вывести в консоль
+ * \return поток вывода
+ */
 std::ostream& operator<< (std::ostream& os, const Bulk::ICommand::WPtr ptrCmd);

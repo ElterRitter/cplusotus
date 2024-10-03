@@ -6,9 +6,16 @@
 
 namespace Bulk {
 
+/*!
+ * \brief Класс ListCommadStorage реализует сохранение блока команд в вектор
+ */
 class ListCommadStorage : public ICommandStorage
 {
 public:
+    /*!
+     * \brief Конструктор ListCommadStorage
+     * \param bulkSize размер блока команд
+     */
     explicit ListCommadStorage(const uint32_t bulkSize);
 
     // override members of ICommandStorage

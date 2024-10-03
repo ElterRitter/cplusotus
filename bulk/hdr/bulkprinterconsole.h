@@ -4,6 +4,11 @@
 
 namespace Bulk {
 
+/*!
+ * \brief Класс BulkPrinterConsole являтся реализацией интерфейса IBulkPrinter,
+ * который осуществляет вывод накопленных команд в консоль ( cout ).
+ */
+
 class BulkPrinterConsole : public IBulkPrinter
 {
 public:
