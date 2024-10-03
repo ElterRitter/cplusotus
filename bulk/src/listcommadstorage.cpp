@@ -5,6 +5,8 @@
 using std::cerr;
 using std::endl;
 
+using namespace Bulk;
+
 ListCommadStorage::ListCommadStorage(const uint32_t bulkSize) :
     m_bulkSize{bulkSize}
 {

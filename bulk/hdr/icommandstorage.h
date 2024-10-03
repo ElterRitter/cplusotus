@@ -4,6 +4,8 @@
 #include <memory>
 #include <inttypes.h>
 
+namespace Bulk {
+
 class ICommandStorage
 {
 public:
@@ -17,3 +19,5 @@ public:
     virtual ICommand::WPtr command(const uint32_t idx) noexcept = 0;
     virtual void clear() = 0;
 };
+
+};  // namespace Bulk

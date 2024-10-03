@@ -2,6 +2,8 @@
 
 #include "command.h"
 
+using namespace Bulk;
+
 CommandFabric *CommandFabric::instance()
 {
     static CommandFabric fabric;

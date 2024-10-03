@@ -2,6 +2,8 @@
 
 #include <ibulkprinter.h>
 
+namespace Bulk {
+
 class BulkPrinterConsole : public IBulkPrinter
 {
 public:
@@ -10,3 +12,5 @@ public:
     // overrided members of IBulkPrinter
     virtual void processBulk(const ICommandStorage::Ptr ptrBulk) override final;
 };
+
+};  // namespace bulk

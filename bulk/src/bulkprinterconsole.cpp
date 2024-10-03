@@ -6,6 +6,8 @@
 using std::cout;
 using std::endl;
 
+using namespace Bulk;
+
 void BulkPrinterConsole::processBulk(const ICommandStorage::Ptr ptrBulk)
 {
     if(!ptrBulk)

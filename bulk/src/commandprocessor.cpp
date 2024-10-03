@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <limits>
 
+using namespace Bulk;
+
 CommandProcessor::CommandProcessor(uint32_t bulkSize)
 {
     m_storages.push(std::make_shared<ListCommadStorage>(bulkSize));

@@ -4,6 +4,8 @@
 
 #include <string>
 
+namespace Bulk {
+
 class CommandFabric
 {
 public:
@@ -14,3 +16,4 @@ private:
     CommandFabric() = default;
 };
 
+}; // namespace bulk

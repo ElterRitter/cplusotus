@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+namespace Bulk {
+
 class DynBlockOpenCommand : public ICommand
 {
 public:
@@ -39,4 +41,6 @@ private:
     TimePoint m_dtPoint;
 };
 
-std::ostream& operator<< (std::ostream& os, const ICommand::WPtr ptrCmd);
+};  // namespace Bulk
+
+std::ostream& operator<< (std::ostream& os, const Bulk::ICommand::WPtr ptrCmd);

@@ -1,5 +1,6 @@
 #include "command.h"
 
+using namespace Bulk;
 
 CommonCommand::CommonCommand(const std::string &data) : m_data{data}
 {

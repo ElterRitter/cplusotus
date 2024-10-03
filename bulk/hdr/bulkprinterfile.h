@@ -3,6 +3,8 @@
 #include <ibulkprinter.h>
 #include <string>
 
+namespace Bulk {
+
 class BulkPrinterFile : public IBulkPrinter
 {
 public:
@@ -17,4 +19,4 @@ private:
     std::string makeFileName(const ICommand::WPtr &cmd);
 };
 
-
+}; // namespace

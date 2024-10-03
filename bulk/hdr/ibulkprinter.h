@@ -3,6 +3,8 @@
 
 #include <memory>
 
+namespace Bulk {
+
 class IBulkPrinter
 {
 public:
@@ -12,3 +14,5 @@ public:
 
     virtual void processBulk(const ICommandStorage::Ptr ptrBulk) = 0;
 };
+
+}; // namespace Bulk

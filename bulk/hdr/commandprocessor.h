@@ -7,6 +7,8 @@
 #include <vector>
 #include <stack>
 
+namespace Bulk {
+
 class CommandProcessor : IBulkPublisher
 {
 public:
@@ -26,3 +28,5 @@ private:
 
     void publishBulk();
 };
+
+}; // namespace Bulk

@@ -4,6 +4,8 @@
 
 #include <vector>
 
+namespace Bulk {
+
 class ListCommadStorage : public ICommandStorage
 {
 public:
@@ -19,4 +21,6 @@ public:
 private:
     std::vector<ICommand::Ptr> m_storage;
     uint32_t m_bulkSize;
+};
+
 };

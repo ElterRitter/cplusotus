@@ -13,6 +13,8 @@ using std::cout;
 using std::endl;
 using std::string;
 
+using namespace Bulk;
+
 namespace po = boost::program_options;
 
 int main(int argc, char** argv)

@@ -9,6 +9,8 @@ using std::ofstream;
 using std::ios_base;
 using std::endl;
 
+using namespace Bulk;
+
 BulkPrinterFile::BulkPrinterFile(const std::string &rootFolder) :
     m_rootFilder{rootFolder}
 {
