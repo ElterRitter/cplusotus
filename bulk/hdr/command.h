@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <chrono>
 
 namespace Bulk {
 
@@ -41,6 +42,7 @@ public:
 class CommonCommand : public ICommand
 {
 public:
+    using TimePoint = std::chrono::time_point<std::chrono::system_clock>;
     explicit CommonCommand(const std::string &data);
 //    virtual ~CommonCommand() { std::cout << "destructor for command: " << m_data << " !" << std::endl; }
 
