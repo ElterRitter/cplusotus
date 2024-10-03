@@ -2,7 +2,6 @@
 #include "icommandstorage.h"
 #include "ibulkpublisher.h"
 
-#include <memory>
 #include <string>
 #include <vector>
 #include <stack>
