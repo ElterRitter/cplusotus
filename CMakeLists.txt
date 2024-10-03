@@ -51,6 +51,12 @@ option(BUILD_EDITOR "Build creator" OFF)
 if(BUILD_EDITOR)
     add_subdirectory(editor)
 endif()
+
+option(BUILD_BULK "Build Bulk task" OFF)
+if(BUILD_BULK)
+    add_subdirectory(bulk)
+endif()
+
 # define project sources and headers
 set(MSRCS src/main.cpp)
 set(SRCS src/ipfilter.cpp
