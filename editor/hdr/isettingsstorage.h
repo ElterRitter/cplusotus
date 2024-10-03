@@ -22,24 +22,24 @@ public:
 
     /*!
      * \brief value получить целочисленное значение параметра из хранилища
-     * \param название параметра
-     * \param значение по-умолчанию для параметра
+     * \param key название параметра
+     * \param defaultValue значение по-умолчанию для параметра
      * \return значение параметра из хранилища или значение по-умолчанию
      */
     virtual int value(const std::string & key, const int &defaultValue) = 0;
 
     /*!
      * \brief value получить вещественное значение параметра из хранилища
-     * \param название параметра
-     * \param значение по-умолчанию для параметра
+     * \param key название параметра
+     * \param defaultValue значение по-умолчанию для параметра
      * \return значение параметра из хранилища или значение по-умолчанию
      */
     virtual double value(const std::string & key, const double &defaultValue) = 0;
 
     /*!
      * \brief value получить строковое значение параметра из хранилища
-     * \param название параметра
-     * \param значение по-умолчанию для параметра
+     * \param key название параметра
+     * \param defaultValue значение по-умолчанию для параметра
      * \return значение параметра из хранилища или значение по-умолчанию
      */
     virtual std::string value(const std::string & key, std::string &defaultValue) = 0;
