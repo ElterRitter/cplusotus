@@ -44,7 +44,7 @@ class CommonCommand : public ICommand
 public:
     using TimePoint = std::chrono::time_point<std::chrono::system_clock>;
     explicit CommonCommand(const std::string &data);
-    virtual ~CommonCommand() { std::cout << "destructor for command: " << m_data << " !" << std::endl; }
+//    virtual ~CommonCommand() { std::cout << "destructor for command: " << m_data << " !" << std::endl; }
 
     // override ICommand methods
     virtual ICommand::Type type() const noexcept override final { return ICommand::Type::common; }
