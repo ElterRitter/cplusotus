@@ -57,6 +57,11 @@ if(BUILD_BULK)
     add_subdirectory(subprojects/bulk)
 endif()
 
+option(BUILD_BULK_M "Build Multithreaded Bulk" OFF)
+if(BUILD_BULK_M)
+    add_subdirectory(subprojects/bulkm)
+endif()
+
 # define project sources and headers
 set(MSRCS src/main.cpp)
 set(SRCS src/ipfilter.cpp
