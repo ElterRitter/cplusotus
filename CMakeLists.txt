@@ -49,12 +49,12 @@ endif()
 
 option(BUILD_EDITOR "Build creator" OFF)
 if(BUILD_EDITOR)
-    add_subdirectory(editor)
+    add_subdirectory(subprojects/editor)
 endif()
 
 option(BUILD_BULK "Build Bulk task" OFF)
 if(BUILD_BULK)
-    add_subdirectory(bulk)
+    add_subdirectory(subprojects/bulk)
 endif()
 
 # define project sources and headers
