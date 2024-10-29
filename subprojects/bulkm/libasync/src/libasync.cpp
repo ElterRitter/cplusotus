@@ -27,16 +27,16 @@ processorid id;
 
 string printerRootDirectory()
 {
-    string strRet;
+    string homePath;
 #if defined(OS_WIN)
     const char *pHomeFolder = std::getenv("USERPROFILE");
     if(pHomeFolder != nullptr)
-        strRet.assign(pHomeFolder);
+        homePath.assign(pHomeFolder);
 #else
     homePath.append("~/");
 #endif
 
-    return strRet;
+    return homePath;
 }
 
 processorid connect(const unsigned int blockSize)
