@@ -4,8 +4,7 @@ project(Bulk VERSION 0.1 LANGUAGES CXX)
 
 find_package(Boost REQUIRED)
 
-set(SOURCES src/main.cpp
-            src/commandprocessor.cpp
+set(SOURCES src/commandprocessor.cpp
             src/command.cpp
             src/commandfabric.cpp
             src/listcommadstorage.cpp
@@ -23,9 +22,11 @@ set(HEADERS hdr/commandprocessor.h
             hdr/ibulkpublisher.h
             hdr/bulkprinterconsole.h)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} )
+set(SRC_MAIN src/main.cpp)
 
-source_group("Sources" ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${SRC_MAIN})
+
+source_group("Sources" "${SOURCES};${SRC_MAIN}")
 source_group("Headers" ${HEADERS})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/hdr)
@@ -38,6 +39,10 @@ else()
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Boost::program_options Boost::headers)
+
+if(BUILD_TESTING)
+    include(tests/CMakeLists.txt)
+endif()
 
 include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
