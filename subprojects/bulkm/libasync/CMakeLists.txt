@@ -26,8 +26,7 @@ set(HEADERS hdr/commandprocessor.h
             hdr/bulkprocessor.h
             hdr/libasync.h)
 
-
-add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 
 source_group("Sources" ${SOURCES})
 source_group("Headers" ${HEADERS})
