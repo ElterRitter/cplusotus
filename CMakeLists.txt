@@ -54,7 +54,7 @@ endif()
 
 option(BUILD_BULK "Build Bulk task" OFF)
 if(BUILD_BULK)
-    add_subdirectory(bulk)
+    add_subdirectory(subprojects/bulk)
 endif()
 
 # define project sources and headers
