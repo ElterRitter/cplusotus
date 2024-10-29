@@ -47,6 +47,9 @@ if(BUILD_DOCUMENTATION)
     add_custom_target(doc ALL ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/doxyfile WORKING_DIRECTORY)
 endif()
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 option(BUILD_EDITOR "Build creator" OFF)
 if(BUILD_EDITOR)
     add_subdirectory(subprojects/editor)

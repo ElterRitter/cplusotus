@@ -50,6 +50,7 @@ void BulkProcessor::onPublishBulk(const ICommandStorage::Ptr bulkData)
 //    m_consoleBulks.push(bulkData);
 //    m_cvConsole.notify_one();
 //    lc.unlock();
+
 }
 
 void BulkProcessor::printerFileThreadFunc(const std::string rootLogDirectory)
