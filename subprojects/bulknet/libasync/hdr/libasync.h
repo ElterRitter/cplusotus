@@ -12,7 +12,7 @@ typedef unsigned int processorid;
  * \param blockSize размер блока данных, который будет отправлен в обработку
  * \return идентификатор созданного конвейера
  */
-ASYNC_EXPORT processorid bulk_connect(const unsigned int blockSize);
+ASYNC_EXPORT processorid bulk_connect(const unsigned int blockSize, const char *pRootDirectory, const unsigned int rootDirectoryLen );
 
 /*!
  * \brief метод bulk_recieve отправляет полученную команду в заранее созданный конвейер

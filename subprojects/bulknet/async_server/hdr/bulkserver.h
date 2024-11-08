@@ -41,4 +41,5 @@ private:
     callbackConnected m_callbackConnected;
 
     void handlerAccept(const error_code& erCode, SocketPtr socket);
+    bool waitForNewConnection();
 };

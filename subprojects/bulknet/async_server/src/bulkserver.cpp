@@ -46,21 +46,9 @@ bool BulkServer::listen(const std::string listenInterface, uint16_t port)
     }
 
     tcp::endpoint ep{iface, port};
-    try
-    {
-        m_acceptor = std::shared_ptr<tcp::acceptor>( new tcp::acceptor(*(m_ioService.get()), ep, false));
+    m_acceptor = std::shared_ptr<tcp::acceptor>( new tcp::acceptor(*(m_ioService.get()), ep, false));
+    ret = waitForNewConnection();
 
-        auto pSocket = std::make_shared<tcp::socket>(*(m_ioService.get()));
-        auto accepterHandler = boost::bind(&BulkServer::handlerAccept, this, std::placeholders::_1, pSocket);
-        m_acceptor->async_accept(*(pSocket.get()), accepterHandler);
-    }
-    catch(boost::system::system_error &se)
-    {
-        cerr << "Can't create tcp acceptor for interface " << listenInterface << ":" << port;
-        return ret;
-    }
-
-    ret = true;
     return ret;
 }
 
@@ -77,4 +65,23 @@ void BulkServer::handlerAccept(const error_code &erCode, SocketPtr socket)
 
     TcpSession::Ptr session = std::make_shared<TcpSession>(socket);
     m_callbackConnected(session);
+    waitForNewConnection();
+}
+
+bool BulkServer::waitForNewConnection()
+{
+    bool ret = true;
+    try
+    {
+        auto pSocket = std::make_shared<tcp::socket>(*(m_ioService.get()));
+        auto accepterHandler = boost::bind(&BulkServer::handlerAccept, this, std::placeholders::_1, pSocket);
+        m_acceptor->async_accept(*(pSocket.get()), accepterHandler);
+    }
+    catch(boost::system::system_error &se)
+    {
+//        cerr << "Can't create tcp acceptor for interface " << listenInterface << ":" << port << ". Code " << se.what() <<  endl;
+        ret = false;
+    }
+
+    return ret;
 }

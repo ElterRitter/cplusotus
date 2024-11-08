@@ -4,8 +4,9 @@
 using std::cerr;
 using std::endl;
 
-NetCommandProcessor::NetCommandProcessor(uint32_t blockSize) :
-    m_blockSize{blockSize}
+NetCommandProcessor::NetCommandProcessor(uint32_t blockSize, const std::string &rootLogDirectory) :
+    m_rootLogDirectory{rootLogDirectory}
+    , m_blockSize{blockSize}
 {
 
 }
@@ -14,7 +15,7 @@ void NetCommandProcessor::onAcceptedNewConnection(TcpSession::Ptr session)
 {
     cerr << "Accepting new processor connection" << endl;
     SessionConnection scon;
-    scon.processor = bulk_connect(m_blockSize);
+    scon.processor = bulk_connect(m_blockSize, m_rootLogDirectory.c_str(), m_rootLogDirectory.size());
     scon.session = session;
     m_transports[session->sessionId()] = scon;
 

@@ -32,14 +32,16 @@ int main(int argc, char** argv)
     po::notify(vm);
 
     cout << "Using NetworkBulkProcessor with block size " << blockSize << " and log directory " << rootLogDirectory << endl;
-    NetCommandProcessor bulkProcessor(blockSize);
+    NetCommandProcessor bulkProcessor(blockSize, rootLogDirectory);
     auto onNewConnection = std::bind(&NetCommandProcessor::onAcceptedNewConnection, bulkProcessor, std::placeholders::_1);
 
     cout << "Starting server for 0.0.0.0:" << listenPort << endl;
     BulkServer srv(onNewConnection);
     bool ret = srv.listen("0.0.0.0", listenPort);
     cout << "Server listening ret " << ret << endl;
-    system("pause");
+    cout << "To close server press any key" << endl;
+
+    auto ciget = std::cin.get();
 
     cout << "Server stopped" << endl;
 

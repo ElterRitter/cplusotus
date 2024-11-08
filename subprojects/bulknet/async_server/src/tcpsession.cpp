@@ -72,6 +72,7 @@ void TcpSession::handlerRead(const boost::system::error_code &err_code, size_t b
     if(avaliableBytes == 0)
     {
         avaliableBytes = 1;
+        cerr << "from session " << m_sessionId << " readed " << m_buffer.size() << " bytes" << endl;
         if(onSessionRead_)
             onSessionRead_(m_sessionId, m_buffer.data(), m_buffer.size());
 

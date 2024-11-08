@@ -47,10 +47,13 @@ void BulkPrinterFile::processBulk(ICommandStorage::Ptr ptrBulk)
                 std::cerr << "Can't open file " << fileNamePath << ". Output in file for this bulk not avaliable" << endl;
                 return;
             }
+            file << "bulk: ";
         }
 
-        file << cmd << endl;
+        file << cmd << " ";
     }
+
+    file << endl;
 
     if(ptrBulk->isDynamic())
         fileDynamicMutex.unlock();
