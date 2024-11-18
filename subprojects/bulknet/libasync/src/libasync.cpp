@@ -26,20 +26,6 @@ struct AssociatedProcessors
 std::unordered_map<processorid, AssociatedProcessors::Ptr> processors;
 processorid id;
 
-// string printerRootDirectory()
-// {
-//     string homePath;
-// #if defined(OS_WIN)
-//     const char *pHomeFolder = std::getenv("USERPROFILE");
-//     if(pHomeFolder != nullptr)
-//         homePath.assign(pHomeFolder);
-// #else
-//     homePath.append("~/");
-// #endif
-
-//     return homePath;
-// }
-
 processorid bulk_connect(const unsigned int blockSize, const char *pRootDirectory, unsigned int rootDirectoryLen)
 {
     std::string rootLogdir(pRootDirectory, rootDirectoryLen);
