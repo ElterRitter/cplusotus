@@ -9,21 +9,15 @@ class NetCommandProcessor
 {
 public:
     explicit NetCommandProcessor(uint32_t blockSize, const std::string &rootLogDirectory);
+    ~NetCommandProcessor();
 
     void onAcceptedNewConnection(TcpSession::Ptr session);
     void onDataReaded();
 
 private:
-    struct SessionConnection
-    {
-        TcpSession::Ptr session;
-        processorid processor;
-    };
-    using transportmap = std::unordered_map<int, SessionConnection>;
-
-    transportmap m_transports;
+    std::unordered_map<int, TcpSession::Ptr> m_sessions;
     std::string m_rootLogDirectory;
-    uint32_t m_blockSize;
+    processorid m_processor;
 
     void onIncomingDataReaded(uint32_t sessionId, const char *pData, const std::size_t dataSize);
     void onSessionError(uint32_t sessionId, const boost::system::error_code &err_code);
