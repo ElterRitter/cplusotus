@@ -24,7 +24,7 @@ struct AssociatedProcessors
 };
 
 std::unordered_map<processorid, AssociatedProcessors::Ptr> processors;
-processorid id;
+processorid id = 0;
 
 processorid bulk_connect(const unsigned int blockSize, const char *pRootDirectory, unsigned int rootDirectoryLen)
 {
