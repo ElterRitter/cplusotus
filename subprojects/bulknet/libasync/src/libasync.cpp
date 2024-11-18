@@ -36,8 +36,8 @@ processorid bulk_connect(const unsigned int blockSize, const char *pRootDirector
     auto slotPublishBulk = boost::bind(&BulkProcessor::onPublishBulk, pProcessor->bulkProcessor, boost::placeholders::_1);
     pProcessor->commandHandler->publishBulk.connect(slotPublishBulk);
 
-    processors[id] = std::move(pProcessor);
-    auto ret = id++;
+    processors[++id] = std::move(pProcessor);
+    auto ret = id;
     return ret;
 }
 
