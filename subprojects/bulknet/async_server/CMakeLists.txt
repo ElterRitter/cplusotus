@@ -28,7 +28,7 @@ else()
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DOS_UNIX)
 endif()
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Boost::program_options Boost::headers async)
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::program_options Boost::headers asyncnet)
 
 include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
