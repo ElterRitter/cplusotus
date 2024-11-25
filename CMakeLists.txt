@@ -65,6 +65,11 @@ if(BUILD_BULK_M)
     add_subdirectory(subprojects/bulkm)
 endif()
 
+option(BUILD_BULK_NET "Build network bulk" OFF)
+if(BUILD_BULK_NET)
+    add_subdirectory(subprojects/bulknet)
+endif()
+
 # define project sources and headers
 set(MSRCS src/main.cpp)
 set(SRCS src/ipfilter.cpp
