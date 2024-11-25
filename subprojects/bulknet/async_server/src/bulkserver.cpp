@@ -74,7 +74,7 @@ bool BulkServer::waitForNewConnection()
     try
     {
         auto pSocket = std::make_shared<tcp::socket>(*(m_ioService.get()));
-        auto accepterHandler = boost::bind(&BulkServer::handlerAccept, this, std::placeholders::_1, pSocket);
+        auto accepterHandler = std::bind(&BulkServer::handlerAccept, this, std::placeholders::_1, pSocket);
         m_acceptor->async_accept(*(pSocket.get()), accepterHandler);
     }
     catch(boost::system::system_error &se)
