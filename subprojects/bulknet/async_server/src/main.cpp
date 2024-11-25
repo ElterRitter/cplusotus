@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     BulkServer srv(onNewConnection);
     bool ret = srv.listen("0.0.0.0", listenPort);
     cout << "Server listening ret " << ret << endl;
-    cout << "To close server press any key" << endl;
+    cout << "To close server press any key and enter" << endl;
 
     auto ciget = std::cin.get();
 
