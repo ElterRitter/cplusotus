@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <tuple>
 #include <algorithm>
+#include <cstdint>
 
 using std::cout;
 using std::endl;
