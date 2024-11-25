@@ -8,8 +8,7 @@ set(SOURCES src/main.cpp)
 
 set(HEADERS hdr/matrix.h hdr/unlmatrix.h )
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS}
-    )
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 source_group("Sources" ${SOURCES})
 source_group("Headers" ${HEADERS})
