@@ -50,6 +50,11 @@ endif()
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+option(BUILD_ALLOCS "Build allocators" OFF)
+if(BUILD_ALLOCS)
+    add_subdirectory(subprojects/alloc)
+endif()
+
 option(BUILD_EDITOR "Build creator" OFF)
 if(BUILD_EDITOR)
     add_subdirectory(subprojects/editor)
